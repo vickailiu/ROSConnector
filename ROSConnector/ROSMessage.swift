@@ -14,6 +14,7 @@ class ROSMessage: NSObject {
     /*override init() {
         super.init()
         self.setDefaults()
+     test
     }*/
     
     required override init() {
