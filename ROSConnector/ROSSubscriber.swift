@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol ROSSubscriberDelegate: class {
+public protocol ROSSubscriberDelegate: class {
     func messageRecieved(message: ROSMessage)
 }
 
-class ROSSubscriber: NSObject {
+public class ROSSubscriber: NSObject {
     var manager: ROSConnector?
     var messageClass: Any?
     var topic: String = ""

@@ -8,10 +8,10 @@
 
 import Foundation
 
-class ROSMessage: NSObject {
+public class ROSMessage: NSObject {
     var publishDate: Date?
     
-    required override init() {
+    required override public init() {
         super.init()
         self.setDefaults()
     }

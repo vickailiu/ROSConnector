@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ROSConnector"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "ROSConnecor is library for ROSBridge that uses WebSockets to communicate with Robot Operating System (ROS)"
 
   # This description is used to generate tags and improve search results.

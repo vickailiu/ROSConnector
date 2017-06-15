@@ -9,14 +9,14 @@
 import Foundation
 import SocketRocket
 
-protocol ROSConnectorDelegate: class {
+public protocol ROSConnectorDelegate: class {
     func managerDidConnect(manager: ROSConnector)
     func managerDidTimeout(manager: ROSConnector)
     func manager(manager: ROSConnector, didFailWithError: NSError)
     func manager(manager: ROSConnector, didCloseWithCode: Int, reason: String, wasClean: Bool)
 }
 
-class ROSConnector: NSObject {
+public class ROSConnector: NSObject {
     var subscribers: NSMutableArray!
     var publishers: NSMutableArray!
     var queue: NSMutableArray!
@@ -201,7 +201,7 @@ class ROSConnector: NSObject {
 }
 
 extension ROSConnector: SRWebSocketDelegate {
-    func webSocket(_ webSocket: SRWebSocket!, didReceiveMessage message: Any!) {
+    public func webSocket(_ webSocket: SRWebSocket!, didReceiveMessage message: Any!) {
         print("recieved \(message)")
         
         //let error: NSError? = nil
@@ -224,7 +224,7 @@ extension ROSConnector: SRWebSocketDelegate {
         }
     }
 
-    func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
+    public func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
         print("socket closed -- \(webSocket.url.description) -- Code \(code) -- Reason == \(reason)")
         self.connected = false
         self.socket = nil
@@ -232,7 +232,7 @@ extension ROSConnector: SRWebSocketDelegate {
         self.delegate?.manager(manager: self, didCloseWithCode: code, reason: reason, wasClean: wasClean)
     }
 
-    func webSocket(_ webSocket: SRWebSocket!, didFailWithError error: Error!) {
+    public func webSocket(_ webSocket: SRWebSocket!, didFailWithError error: Error!) {
         print("Socket failed -- \(webSocket.url.description) -- \(error.localizedDescription)")
         self.connected = false
         self.socket = nil
@@ -240,7 +240,7 @@ extension ROSConnector: SRWebSocketDelegate {
         self.delegate?.manager(manager: self, didFailWithError: error as NSError)
     }
 
-    func webSocketDidOpen(_ webSocket: SRWebSocket!) {
+    public func webSocketDidOpen(_ webSocket: SRWebSocket!) {
         print("Socket open -- \(webSocket.url.description)")
         self.timeoutTimer.invalidate()
         self.connected = true

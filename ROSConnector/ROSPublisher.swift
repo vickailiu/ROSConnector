@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ROSPublisher: NSObject {
+public class ROSPublisher: NSObject {
     var manager: ROSConnector?
     var topic: String = ""
     var messageType: String = ""

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ROSServiceCall: NSObject {
+public class ROSServiceCall: NSObject {
     var manager: ROSConnector?
     var service: String = ""
     var serviceId: String?
