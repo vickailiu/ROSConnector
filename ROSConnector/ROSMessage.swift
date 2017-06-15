@@ -11,12 +11,6 @@ import Foundation
 class ROSMessage: NSObject {
     var publishDate: Date?
     
-    /*override init() {
-        super.init()
-        self.setDefaults()
-     test
-    }*/
-    
     required override init() {
         super.init()
         self.setDefaults()
