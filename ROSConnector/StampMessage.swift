@@ -8,11 +8,11 @@
 
 import Foundation
 
-class StampMessage: ROSMessage {
-    var secs: Int = 0
-    var nsecs: NSNumber = 0
+public class StampMessage: ROSMessage {
+    public var secs: Int = 0
+    public var nsecs: NSNumber = 0
     
-    func getDate() -> Date {
+    public func getDate() -> Date {
         return Date(timeIntervalSince1970: TimeInterval(self.secs))
     }
     

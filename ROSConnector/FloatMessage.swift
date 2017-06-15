@@ -8,6 +8,6 @@
 
 import Foundation
 
-class FloatMessage: ROSMessage {
-    var data: Float64 = 0
+public class FloatMessage: ROSMessage {
+    public var data: Float64 = 0
 }

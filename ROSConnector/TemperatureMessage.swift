@@ -8,13 +8,13 @@
 
 import Foundation
 
-class TemperatureMessage: ROSMessage {
-    var header: HeaderMessage = HeaderMessage()
+public class TemperatureMessage: ROSMessage {
+    public var header: HeaderMessage = HeaderMessage()
     
-    var temperature: Double = 0
-    var variance: Double = 0
+    public var temperature: Double = 0
+    public var variance: Double = 0
     
-    override func setDefaults() {
+    override public func setDefaults() {
         self.header = HeaderMessage()
     }
 }

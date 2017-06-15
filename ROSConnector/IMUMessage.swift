@@ -8,19 +8,19 @@
 
 import Foundation
 
-class IMUMessage: ROSMessage {
-    var header: HeaderMessage = HeaderMessage()
+public class IMUMessage: ROSMessage {
+    public var header: HeaderMessage = HeaderMessage()
     
-    var orientation: QuaternionMessage = QuaternionMessage()
-    var orientationCovariance: [Any] = [Any]()
+    public var orientation: QuaternionMessage = QuaternionMessage()
+    public var orientationCovariance: [Any] = [Any]()
     
-    var angularVelocity: VectorMessage = VectorMessage()
-    var angularVelocityCovariance: [Any] = [Any]()
+    public var angularVelocity: VectorMessage = VectorMessage()
+    public var angularVelocityCovariance: [Any] = [Any]()
     
-    var linearAcceleration: VectorMessage = VectorMessage()
-    var linearAccelerationCovariance: [Any] = [Any]()
+    public var linearAcceleration: VectorMessage = VectorMessage()
+    public var linearAccelerationCovariance: [Any] = [Any]()
     
-    override func setDefaults() {
+    override public func setDefaults() {
         self.header = HeaderMessage()
         
         self.orientation = QuaternionMessage()

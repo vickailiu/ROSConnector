@@ -8,6 +8,6 @@
 
 import Foundation
 
-class BoolMessage: ROSMessage {
-    var data: Bool = false
+public class BoolMessage: ROSMessage {
+    public var data: Bool = false
 }

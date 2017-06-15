@@ -8,12 +8,12 @@
 
 import Foundation
 
-class HeaderMessage: ROSMessage {
-    var frameId: String = ""
-    var seq: NSNumber = 0
-    var stamp: StampMessage = StampMessage()
+public class HeaderMessage: ROSMessage {
+    public var frameId: String = ""
+    public var seq: NSNumber = 0
+    public var stamp: StampMessage = StampMessage()
     
-    override func setDefaults() {
+    override public func setDefaults() {
         self.stamp = StampMessage()
     }
 }

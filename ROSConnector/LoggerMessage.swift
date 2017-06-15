@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LoggerMessage: ROSMessage {
-    var level: String = ""
-    var name: String = ""
+public class LoggerMessage: ROSMessage {
+    public var level: String = ""
+    public var name: String = ""
 }

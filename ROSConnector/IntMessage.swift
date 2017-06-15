@@ -8,6 +8,6 @@
 
 import Foundation
 
-class IntMessage: ROSMessage {
-    var data: Int = 0
+public class IntMessage: ROSMessage {
+    public var data: Int = 0
 }

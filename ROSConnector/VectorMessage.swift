@@ -8,8 +8,8 @@
 
 import Foundation
 
-class VectorMessage: ROSMessage {
-    var x: Double = 0
-    var y: Double = 0
-    var z: Double = 0
+public class VectorMessage: ROSMessage {
+    public var x: Double = 0
+    public var y: Double = 0
+    public var z: Double = 0
 }

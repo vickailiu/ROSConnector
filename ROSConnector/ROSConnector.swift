@@ -17,21 +17,21 @@ public protocol ROSConnectorDelegate: class {
 }
 
 public class ROSConnector: NSObject {
-    var subscribers: NSMutableArray!
-    var publishers: NSMutableArray!
-    var queue: NSMutableArray!
+    public var subscribers: NSMutableArray!
+    public var publishers: NSMutableArray!
+    public var queue: NSMutableArray!
     
-    var host: String? = ""
-    var socket: SRWebSocket?
-    weak var delegate: ROSConnectorDelegate?
+    public var host: String? = ""
+    public var socket: SRWebSocket?
+    public weak var delegate: ROSConnectorDelegate?
     
-    var connected: Bool = false
-    var timeoutTimer = Timer()
-    var timeout: Int = 5
+    public var connected: Bool = false
+    public var timeoutTimer = Timer()
+    public var timeout: Int = 5
     
-    var lastPublishedMessage: ROSMessage?
-    var lastReceivedMessage: ROSMessage?
-    var lastServiceCall: ROSServiceCall?
+    public var lastPublishedMessage: ROSMessage?
+    public var lastReceivedMessage: ROSMessage?
+    public var lastServiceCall: ROSServiceCall?
     
     private override init() {
         super.init()
@@ -41,9 +41,9 @@ public class ROSConnector: NSObject {
         self.connected = false
     }
     
-    static let sharedInstance = ROSConnector()
+    public static let sharedInstance = ROSConnector()
     
-    func addSubscriber(topic: String, delegate: ROSSubscriberDelegate, messageClass: AnyClass) -> ROSSubscriber {
+    public func addSubscriber(topic: String, delegate: ROSSubscriberDelegate, messageClass: AnyClass) -> ROSSubscriber {
         let subscriber = ROSSubscriber()
         subscriber.manager = self
         subscriber.delegate = delegate
@@ -54,7 +54,7 @@ public class ROSConnector: NSObject {
         return subscriber
     }
     
-    func addPublisher(topic: String, messageType message: String) -> ROSPublisher {
+    public func addPublisher(topic: String, messageType message: String) -> ROSPublisher {
         let publisher = ROSPublisher()
         publisher.manager = self
         publisher.topic = topic
@@ -64,7 +64,7 @@ public class ROSConnector: NSObject {
         return publisher
     }
     
-    func makeServiceCall(service: String, responseTarget serviceCallObject: NSObject, selector serviceSelector: Selector) -> ROSServiceCall {
+    public func makeServiceCall(service: String, responseTarget serviceCallObject: NSObject, selector serviceSelector: Selector) -> ROSServiceCall {
         let serviceCall = ROSServiceCall()
         serviceCall.manager = self
         serviceCall.service = service
@@ -73,7 +73,7 @@ public class ROSConnector: NSObject {
         return serviceCall
     }
     
-    func setParam(name: String, value: AnyClass) -> ROSServiceCall {
+    public func setParam(name: String, value: AnyClass) -> ROSServiceCall {
         let serviceCall = ROSServiceCall()
         serviceCall.manager = self
         serviceCall.service = "/rosapi/set_param"
@@ -81,7 +81,7 @@ public class ROSConnector: NSObject {
         return serviceCall
     }
     
-    func getParam(name: String, responseTarget object: NSObject, selector responseSelector: Selector) -> ROSServiceCall {
+    public func getParam(name: String, responseTarget object: NSObject, selector responseSelector: Selector) -> ROSServiceCall {
         let serviceCall = ROSServiceCall()
         serviceCall.manager = self
         serviceCall.service = "/rosapi/get_param"
@@ -91,23 +91,23 @@ public class ROSConnector: NSObject {
     }
     
     
-    func addExistingSubscriber(subscriber: ROSSubscriber) {
+    public func addExistingSubscriber(subscriber: ROSSubscriber) {
         subscriber.subscribe()
     }
     
-    func addExistingPublisher(publisher: ROSPublisher) {
+    public func addExistingPublisher(publisher: ROSPublisher) {
         publisher.advertise()
     }
     
-    func removeSubscriber(subscriber: ROSSubscriber) {
+    public func removeSubscriber(subscriber: ROSSubscriber) {
         subscriber.unsubscribe()
     }
     
-    func removePublisher(publisher: ROSPublisher) {
+    public func removePublisher(publisher: ROSPublisher) {
         publisher.unadvertise()
     }
     
-    func connect(socketHost: String) {
+    public func connect(socketHost: String) {
         if (self.connected || (self.socket != nil)) {
             print("Socket already open")
         }
@@ -133,11 +133,11 @@ public class ROSConnector: NSObject {
         self.delegate?.managerDidTimeout(manager: self)
     }
     
-    func disconnect() {
+    public func disconnect() {
         self.socket?.close()
     }
     
-    func sendData(data: NSDictionary) {
+    public func sendData(data: NSDictionary) {
         print("sending   ---    \(data)")
         //let jsonError: NSError? = nil
         do {
@@ -149,7 +149,7 @@ public class ROSConnector: NSObject {
         }
     }
     
-    func postSubscriberData(data: NSDictionary) {
+    public func postSubscriberData(data: NSDictionary) {
         let msg = data.object(forKey: "msg") as? NSDictionary
         let topic = data.object(forKey: "topic") as? String
         
@@ -169,7 +169,7 @@ public class ROSConnector: NSObject {
         }
     }
     
-    func postServiceCallResponse(data: NSDictionary) {
+    public func postServiceCallResponse(data: NSDictionary) {
         if let call = self.lastServiceCall {
             call.recieve(data: data)
             if (call.serviceObject?.responds(to: call.serviceSelector))! {
@@ -178,7 +178,7 @@ public class ROSConnector: NSObject {
         }
     }
     
-    func advertisePublishers() {
+    public func advertisePublishers() {
         for item in self.publishers {
             if let publisher = item as? ROSPublisher {
                 if publisher.isActive {
@@ -188,7 +188,7 @@ public class ROSConnector: NSObject {
         }
     }
     
-    func attachSubscribers() {
+    public func attachSubscribers() {
         for item in self.subscribers {
             if let subscriber = item as? ROSSubscriber {
                 if subscriber.isActive {

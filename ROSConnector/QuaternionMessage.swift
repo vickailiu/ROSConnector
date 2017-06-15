@@ -8,9 +8,9 @@
 
 import Foundation
 
-class QuaternionMessage: ROSMessage {
-    var x: Double = 0
-    var y: Double = 0
-    var z: Double = 0
-    var w: Double = 0
+public class QuaternionMessage: ROSMessage {
+    public var x: Double = 0
+    public var y: Double = 0
+    public var z: Double = 0
+    public var w: Double = 0
 }

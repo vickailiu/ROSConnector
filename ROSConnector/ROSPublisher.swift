@@ -9,14 +9,14 @@
 import Foundation
 
 public class ROSPublisher: NSObject {
-    var manager: ROSConnector?
-    var topic: String = ""
-    var messageType: String = ""
-    var publisherId: String?
-    var label: String = ""
-    var isActive: Bool = false
+    public var manager: ROSConnector?
+    public var topic: String = ""
+    public var messageType: String = ""
+    public var publisherId: String?
+    public var label: String = ""
+    public var isActive: Bool = false
     
-    func publish(message: ROSMessage) {
+    public func publish(message: ROSMessage) {
         let messageData = message.publish()
         let data = NSMutableDictionary(objects: ["publish", message.publish(), self.topic], forKeys: ["op" as NSCopying, "msg" as NSCopying, "topic" as NSCopying])
         if let id = self.publisherId {
@@ -27,7 +27,7 @@ public class ROSPublisher: NSObject {
         self.manager?.sendData(data: data)
     }
     
-    func advertise() {
+    public func advertise() {
         self.isActive = true
         let data = NSMutableDictionary(objects: ["advertise", self.messageType, self.topic], forKeys: ["op" as NSCopying, "type" as NSCopying, "topic" as NSCopying])
         if let id = self.publisherId {
@@ -36,7 +36,7 @@ public class ROSPublisher: NSObject {
         self.manager?.sendData(data: data)
     }
     
-    func unadvertise() {
+    public func unadvertise() {
         self.isActive = false
         let data = NSMutableDictionary(objects: ["unadvertise", self.topic], forKeys: ["op" as NSCopying, "topic" as NSCopying])
         if let id = self.publisherId {

@@ -8,11 +8,11 @@
 
 import Foundation
 
-class TwistMessage: ROSMessage {
-    var linear: VectorMessage = VectorMessage()
-    var angular: VectorMessage = VectorMessage()
+public class TwistMessage: ROSMessage {
+    public var linear: VectorMessage = VectorMessage()
+    public var angular: VectorMessage = VectorMessage()
     
-    override func setDefaults() {
+    override public func setDefaults() {
         self.linear = VectorMessage()
         self.angular = VectorMessage()
     }

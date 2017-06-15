@@ -9,27 +9,27 @@
 import Foundation
 import MapKit
 
-class NavSatFixMessage: ROSMessage {
-    var status: NavSetStatusMessage = NavSetStatusMessage()
-    var header: HeaderMessage = HeaderMessage()
+public class NavSatFixMessage: ROSMessage {
+    public var status: NavSetStatusMessage = NavSetStatusMessage()
+    public var header: HeaderMessage = HeaderMessage()
     
-    var latitude: Double = 0
-    var longitude: Double = 0
-    var altitude: Double = 0
+    public var latitude: Double = 0
+    public var longitude: Double = 0
+    public var altitude: Double = 0
     
-    var positionCovariance: [Any] = [Any]()
+    public var positionCovariance: [Any] = [Any]()
     
-    var positionCocarianceType: NSNumber = 0
+    public var positionCocarianceType: NSNumber = 0
     
-    func getLocation() -> CLLocation {
+    public func getLocation() -> CLLocation {
         return CLLocation(latitude: self.latitude, longitude: self.longitude)
     }
     
-    func getCoordinate() -> CLLocationCoordinate2D {
+    public func getCoordinate() -> CLLocationCoordinate2D {
         return CLLocationCoordinate2DMake(self.latitude, self.longitude)
     }
     
-    override func setDefaults() {
+    override public func setDefaults() {
         self.header = HeaderMessage()
         self.status = NavSetStatusMessage()
     }

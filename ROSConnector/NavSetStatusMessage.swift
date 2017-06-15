@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NavSetStatusMessage: ROSMessage {
-    var status: NSNumber = 0
-    var service: NSNumber = 0
+public class NavSetStatusMessage: ROSMessage {
+    public var status: NSNumber = 0
+    public var service: NSNumber = 0
 }

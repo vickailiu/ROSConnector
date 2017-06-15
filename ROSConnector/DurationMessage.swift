@@ -8,6 +8,6 @@
 
 import Foundation
 
-class DurationMessage: ROSMessage {
-    var data: TimeInterval = 0
+public class DurationMessage: ROSMessage {
+    public var data: TimeInterval = 0
 }

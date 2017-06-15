@@ -8,13 +8,13 @@
 
 import Foundation
 
-class JointState: ROSMessage {
-    var name = [String]()
-    var position = [Float64]()
-    var velocity = [Float64]()
-    var effort = [Float64]()
+public class JointState: ROSMessage {
+    public var name = [String]()
+    public var position = [Float64]()
+    public var velocity = [Float64]()
+    public var effort = [Float64]()
     
-    override func setDefaults() {
+    override public func setDefaults() {
         self.name = [String]()
         self.position = [Float64]()
         self.velocity = [Float64]()

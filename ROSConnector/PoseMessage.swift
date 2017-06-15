@@ -8,10 +8,10 @@
 
 import Foundation
 
-class PoseMessage: ROSMessage {
-    var x: Double = 0
-    var y: Double = 0
-    var theta: Double = 0
-    var linearVelocity: Double = 0
-    var angularVelocity: Double = 0
+public class PoseMessage: ROSMessage {
+    public var x: Double = 0
+    public var y: Double = 0
+    public var theta: Double = 0
+    public var linearVelocity: Double = 0
+    public var angularVelocity: Double = 0
 }

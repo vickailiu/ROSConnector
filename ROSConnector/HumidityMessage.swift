@@ -8,12 +8,12 @@
 
 import Foundation
 
-class HumidityMessage: ROSMessage {
-    var header: HeaderMessage = HeaderMessage()
-    var relativeHumidity: NSNumber = 0
-    var variance: NSNumber = 0
+public class HumidityMessage: ROSMessage {
+    public var header: HeaderMessage = HeaderMessage()
+    public var relativeHumidity: NSNumber = 0
+    public var variance: NSNumber = 0
     
-    override func setDefaults() {
+    override public func setDefaults() {
         self.header = HeaderMessage()
     }
 }

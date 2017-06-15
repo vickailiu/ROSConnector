@@ -9,22 +9,22 @@
 import Foundation
 
 public class ROSMessage: NSObject {
-    var publishDate: Date?
+    public var publishDate: Date?
     
     required override public init() {
         super.init()
         self.setDefaults()
     }
     
-    func setDefaults() {
+    public func setDefaults() {
         // assign default values to certain properties
     }
     
-    func load() {
+    public func load() {
         // override when the message is populated
     }
     
-    func process(messageData: NSDictionary) {
+    public func process(messageData: NSDictionary) {
         self.publishDate = Date()
         
         for key in messageData.allKeys {
@@ -42,7 +42,7 @@ public class ROSMessage: NSObject {
         self.load()
     }
     
-    func publish() -> NSDictionary {
+    public func publish() -> NSDictionary {
         let data = NSMutableDictionary()
         let properties = self.propertyKeys()
         for key in properties {
@@ -57,7 +57,7 @@ public class ROSMessage: NSObject {
         return data
     }
     
-    func propertyKeys() -> NSArray {
+    public func propertyKeys() -> NSArray {
         var count: UInt32 = 0
         let properties = class_copyPropertyList(self.classForCoder, &count)!
         

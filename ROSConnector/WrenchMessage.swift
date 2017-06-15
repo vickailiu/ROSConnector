@@ -8,11 +8,11 @@
 
 import Foundation
 
-class WrenchMessage: ROSMessage {
-    var force: VectorMessage = VectorMessage()
-    var torque: VectorMessage = VectorMessage()
+public class WrenchMessage: ROSMessage {
+    public var force: VectorMessage = VectorMessage()
+    public var torque: VectorMessage = VectorMessage()
     
-    override func setDefaults() {
+    override public func setDefaults() {
         self.force = VectorMessage()
         self.torque = VectorMessage()
     }

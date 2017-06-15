@@ -13,25 +13,25 @@ public protocol ROSSubscriberDelegate: class {
 }
 
 public class ROSSubscriber: NSObject {
-    var manager: ROSConnector?
-    var messageClass: Any?
-    var topic: String = ""
-    var messageType: String?
-    var subscriberId: String?
+    public var manager: ROSConnector?
+    public var messageClass: Any?
+    public var topic: String = ""
+    public var messageType: String?
+    public var subscriberId: String?
     
-    var isActive: Bool = false
+    public var isActive: Bool = false
     
-    weak var delegate: ROSSubscriberDelegate?
+    public weak var delegate: ROSSubscriberDelegate?
     
     // extra parameters
-    var topicType: String = ""
-    var throttleRate: Int?
-    var queueLength: Int?
-    var fragmentSize: Int?
-    var compression: String?
-    var label: String = ""
+    public var topicType: String = ""
+    public var throttleRate: Int?
+    public var queueLength: Int?
+    public var fragmentSize: Int?
+    public var compression: String?
+    public var label: String = ""
     
-    func subscribe() {
+    public func subscribe() {
         self.isActive = true
         let data = NSMutableDictionary(objects: ["subscribe", self.topic], forKeys: ["op" as NSCopying, "topic" as NSCopying])
         if let type = self.messageType {
@@ -55,7 +55,7 @@ public class ROSSubscriber: NSObject {
         self.manager?.sendData(data: data)
     }
     
-    func unsubscribe() {
+    public func unsubscribe() {
         self.isActive = false
         let data = NSMutableDictionary(objects: ["unsubscribe", self.topic], forKeys: ["op" as NSCopying, "topic" as NSCopying])
         if let subscriberId = self.subscriberId {
