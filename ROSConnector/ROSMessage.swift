@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objcMembers
 public class ROSMessage: NSObject {
     public var publishDate: Date?
     
