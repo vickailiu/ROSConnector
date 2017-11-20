@@ -35,6 +35,7 @@
 		191AA9931EF2E0EE00988ECA /* VectorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191AA98D1EF2E0EE00988ECA /* VectorMessage.swift */; };
 		191AA9941EF2E0EE00988ECA /* PoseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191AA98E1EF2E0EE00988ECA /* PoseMessage.swift */; };
 		19B068CD1EF2DDE90021BA41 /* ROSConnector.h in Headers */ = {isa = PBXBuildFile; fileRef = 19B068CB1EF2DDE90021BA41 /* ROSConnector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F5FBB351FC27E1400F19D2C /* ArrayMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5FBB341FC27E1400F19D2C /* ArrayMessage.swift */; };
 		754FF01006A6EE1EB844F200 /* Pods_ROSConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2FAF7D7925B580AAE47786C /* Pods_ROSConnector.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		19B068C81EF2DDE90021BA41 /* ROSConnector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ROSConnector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19B068CB1EF2DDE90021BA41 /* ROSConnector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ROSConnector.h; sourceTree = "<group>"; };
 		19B068CC1EF2DDE90021BA41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F5FBB341FC27E1400F19D2C /* ArrayMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayMessage.swift; sourceTree = "<group>"; };
 		8AB801C391F9DB3848853109 /* Pods-ROSConnector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROSConnector.release.xcconfig"; path = "Pods/Target Support Files/Pods-ROSConnector/Pods-ROSConnector.release.xcconfig"; sourceTree = "<group>"; };
 		D2FAF7D7925B580AAE47786C /* Pods_ROSConnector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ROSConnector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FA90264904CBF57FF7332B /* Pods-ROSConnector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROSConnector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ROSConnector/Pods-ROSConnector.debug.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 		191AA9651EF2E09100988ECA /* StandartMessages */ = {
 			isa = PBXGroup;
 			children = (
+				4F5FBB341FC27E1400F19D2C /* ArrayMessage.swift */,
 				191AA9691EF2E0D800988ECA /* EmptyMessage.swift */,
 				191AA96A1EF2E0D800988ECA /* TimeMessage.swift */,
 				191AA96B1EF2E0D800988ECA /* DurationMessage.swift */,
@@ -338,6 +341,7 @@
 				191AA92D1EF2E04700988ECA /* ROSPublisher.swift in Sources */,
 				191AA97A1EF2E0D800988ECA /* BoolMessage.swift in Sources */,
 				191AA9771EF2E0D800988ECA /* StringMessage.swift in Sources */,
+				4F5FBB351FC27E1400F19D2C /* ArrayMessage.swift in Sources */,
 				191AA9841EF2E0E000988ECA /* JointState.swift in Sources */,
 				191AA9791EF2E0D800988ECA /* FloatMessage.swift in Sources */,
 			);
