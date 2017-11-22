@@ -28,10 +28,25 @@ public class ROSMessage: NSObject {
     public func process(messageData: NSDictionary) {
         self.publishDate = Date()
         
-        for key in messageData.allKeys {
+//        for key in messageData.allKeys {
+//            if let stringKey = key as? String {
+//                let value = messageData.object(forKey: stringKey)
+//
+//                if let objectProperty = self.value(forKey: stringKey) as? ROSMessage {
+//                    objectProperty.process(messageData: value as! NSDictionary)
+//                }
+//                else {
+//                    self.setValue(value, forKey: stringKey)
+//                }
+//            }
+//        }
+        
+        var checkForKey = true
+        for (key, _) in messageData {
+            guard checkForKey == true else { return }
             if let stringKey = key as? String {
                 let value = messageData.object(forKey: stringKey)
-                
+        
                 if let objectProperty = self.value(forKey: stringKey) as? ROSMessage {
                     objectProperty.process(messageData: value as! NSDictionary)
                 }
@@ -39,6 +54,7 @@ public class ROSMessage: NSObject {
                     self.setValue(value, forKey: stringKey)
                 }
             }
+            checkForKey = false
         }
         self.load()
     }
@@ -65,7 +81,7 @@ public class ROSMessage: NSObject {
         let rv = NSMutableArray()
         
         for i in 0..<count {
-            let property: objc_property_t = properties[Int(i)]!
+            let property: objc_property_t = properties[Int(i)]
             let name = String.init(utf8String: property_getName(property))
             rv.add(name!)
         }
