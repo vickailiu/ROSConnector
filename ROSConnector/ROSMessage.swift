@@ -28,36 +28,56 @@ public class ROSMessage: NSObject {
     public func process(messageData: NSDictionary) {
         self.publishDate = Date()
         
-//        for key in messageData.allKeys {
+        let propertyList = Mirror(reflecting: self).children.flatMap { $0.label }
+        
+        for key in messageData.allKeys {
+            if let stringKey = key as? String {
+                if propertyList.index(of: stringKey) == nil { continue }
+
+                let value = messageData.object(forKey: stringKey)
+
+                if let objectProperty = self.value(forKey: stringKey) as? ROSMessage {
+                    objectProperty.process(messageData: value as! NSDictionary)
+                }
+                else if let objectArray = value as? [NSDictionary] {
+                    for element in objectArray {
+                        var messageElement = self.value(forKey: "temp") as? ROSMessage
+                        messageElement?.process(messageData: element as NSDictionary)
+                        self.pushToArray(data: messageElement!)
+                    }
+                }
+                else {
+                    self.setValue(value, forKey: stringKey)
+                }
+            }
+        }
+        
+//        var checkForKey = true
+//        for (key, _) in messageData {
+//            //guard checkForKey == true else { return }
 //            if let stringKey = key as? String {
 //                let value = messageData.object(forKey: stringKey)
 //
 //                if let objectProperty = self.value(forKey: stringKey) as? ROSMessage {
 //                    objectProperty.process(messageData: value as! NSDictionary)
 //                }
+//                else if let objectArray = value as? [NSDictionary] {
+//                    for element in objectArray {
+//                        var messageElement = self.value(forKey: "temp") as? ROSMessage
+//                        messageElement?.process(messageData: element as NSDictionary)
+//                        self.pushToArray(data: messageElement!)
+//                    }
+//                }
 //                else {
 //                    self.setValue(value, forKey: stringKey)
 //                }
 //            }
+//            //checkForKey = false
 //        }
-        
-        var checkForKey = true
-        for (key, _) in messageData {
-            guard checkForKey == true else { return }
-            if let stringKey = key as? String {
-                let value = messageData.object(forKey: stringKey)
-        
-                if let objectProperty = self.value(forKey: stringKey) as? ROSMessage {
-                    objectProperty.process(messageData: value as! NSDictionary)
-                }
-                else {
-                    self.setValue(value, forKey: stringKey)
-                }
-            }
-            checkForKey = false
-        }
         self.load()
     }
+    
+    public func pushToArray(data: ROSMessage) {}
     
     public func publish() -> NSDictionary {
         let data = NSMutableDictionary()
